@@ -14,10 +14,10 @@ public class TodoService {
     private static final int todosCount = 3;
 
     static {
-        todos.add(new Todo(1, "Golu", "Spring", new Date(), false));
-        todos.add(new Todo(1, "Golu", "Android", new Date(), false));
-        todos.add(new Todo(2, "Shubham", "Spring", new Date(), false));
-        todos.add(new Todo(3, "Sunny", "Spring", new Date(), false));
+        todos.add(new Todo(1, "Ravi", "Spring", new Date(), false));
+        todos.add(new Todo(2, "Ravi", "Android", new Date(), false));
+        todos.add(new Todo(3, "Shubham", "Spring", new Date(), false));
+        todos.add(new Todo(4, "Sunny", "Spring", new Date(), false));
     }
 
     public List<Todo> retrieveTodos(String user){

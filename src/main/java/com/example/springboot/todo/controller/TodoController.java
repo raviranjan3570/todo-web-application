@@ -19,19 +19,19 @@ public class TodoController {
     TodoService service;
 
     @RequestMapping(value = "/list-todos", method = RequestMethod.GET)
-    public String showTodos(ModelMap model){
+    public String showTodos(ModelMap model) {
         String name = (String) model.get("name");
         model.put("todos", service.retrieveTodos(name));
         return "list-todos";
     }
 
     @RequestMapping(value = "/add-todo", method = RequestMethod.GET)
-    public String showaddTodo(ModelMap model){
+    public String showaddTodo(ModelMap model) {
         return "todo";
     }
 
     @RequestMapping(value = "/add-todo", method = RequestMethod.POST)
-    public String addTodo(ModelMap model, @RequestParam String desc){
+    public String addTodo(ModelMap model, @RequestParam String desc) {
         service.addTodo(5, (String) model.get("name"), desc, new Date(), false);
         return "redirect:/list-todos";
     }

@@ -20,21 +20,21 @@ public class TodoService {
         todos.add(new Todo(4, "Sunny", "Spring", new Date(), false));
     }
 
-    public List<Todo> retrieveTodos(String user){
+    public List<Todo> retrieveTodos(String user) {
         List<Todo> filteredTodos = new ArrayList<>();
-        for(Todo todo : todos){
-            if(todo.getUser().equals(user)){
+        for (Todo todo : todos) {
+            if (todo.getUser().equals(user)) {
                 filteredTodos.add(todo);
             }
         }
         return filteredTodos;
     }
 
-    public void addTodo(int id, String user, String desc, Date date, boolean isFinished){
+    public void addTodo(int id, String user, String desc, Date date, boolean isFinished) {
         todos.add(new Todo(id, user, desc, date, isFinished));
     }
 
-    public void deleteTodo(int id){
+    public void deleteTodo(int id) {
         todos.removeIf(todo -> todo.getId() == id);
     }
 }

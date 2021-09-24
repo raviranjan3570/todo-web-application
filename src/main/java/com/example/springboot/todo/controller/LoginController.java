@@ -17,16 +17,16 @@ public class LoginController {
     LoginService service;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String showLoginPage(){
+    public String showLoginPage() {
         return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String showWelcomePage(@RequestParam String name, @RequestParam String password,
-                                  ModelMap model){
+                                  ModelMap model) {
 
         boolean isValidUser = service.validateUser(name, password);
-        if(!isValidUser){
+        if (!isValidUser) {
             model.put("errorMessage", "Invalid credential");
             return "login";
         }

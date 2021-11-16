@@ -2,7 +2,6 @@ package com.example.springboot.todo.controller;
 
 import com.example.springboot.todo.model.Todo;
 import com.example.springboot.todo.service.TodoRepository;
-import com.example.springboot.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,9 +23,6 @@ import java.util.Date;
 public class TodoController {
 
     @Autowired
-    TodoService service;
-
-    @Autowired
     TodoRepository repository;
 
     @InitBinder
@@ -39,7 +35,7 @@ public class TodoController {
     @RequestMapping(value = "/list-todos", method = RequestMethod.GET)
     public String showTodos(ModelMap model) {
         String name = getLoggedInUserName();
-        model.put("todos", service.retrieveTodos(name));
+        model.put("todos", repository.findByUser(name));
         return "list-todos";
     }
 
@@ -70,13 +66,13 @@ public class TodoController {
 
     @RequestMapping(value = "/delete-todo", method = RequestMethod.GET)
     public String deleteTodo(@RequestParam int id) {
-        service.deleteTodo(id);
+        repository.deleteById(id);
         return "redirect:/list-todos";
     }
 
     @RequestMapping(value = "/update-todo", method = RequestMethod.GET)
     public String showUpdateTodoPage(@RequestParam int id, ModelMap model) {
-        Todo todo = service.retrieveTodo(id);
+        Todo todo = repository.findById(id).get();
         model.put("todo", todo);
         return "todo";
     }
@@ -87,7 +83,7 @@ public class TodoController {
             return "todo";
         }
         todo.setUser(getLoggedInUserName());
-        service.updateTodo(todo);
+        repository.save(todo);
         return "redirect:/list-todos";
     }
 }

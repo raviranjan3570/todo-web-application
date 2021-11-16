@@ -1,6 +1,7 @@
 package com.example.springboot.todo.controller;
 
 import com.example.springboot.todo.model.Todo;
+import com.example.springboot.todo.service.TodoRepository;
 import com.example.springboot.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -24,6 +25,9 @@ public class TodoController {
 
     @Autowired
     TodoService service;
+
+    @Autowired
+    TodoRepository repository;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -59,8 +63,8 @@ public class TodoController {
         if (result.hasErrors()) {
             return "todo";
         }
-        service.addTodo(5, getLoggedInUserName(), todo.getDesc(),
-                todo.getTargetDate(), false);
+        todo.setUser(getLoggedInUserName());
+        repository.save(todo);
         return "redirect:/list-todos";
     }
 

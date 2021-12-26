@@ -1,6 +1,5 @@
-package com.example.springboot.todo.service;
+package com.example.springboot.todo.jpa;
 
-import com.example.springboot.todo.model.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

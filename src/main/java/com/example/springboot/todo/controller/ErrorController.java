@@ -6,6 +6,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+/*
+By adding an error keyword here, we're saying that this is an error controller.
+@ExceptionHandler handles a particular type pf exception.
+*/
 @Controller("error")
 public class ErrorController {
 

@@ -1,14 +1,15 @@
-<nav role="navigation" class="navbar navbar-default">
-    <div class="">
-        <a href="http://localhost:8080/login" class="navbar-brand">Todo Management</a>
-    </div>
-    <div class="navbar-collapse">
+<%--Refer w3cchool--%>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Todo Management</a>
+        </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/list-todos">Todos</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/logout">Logout</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
     </div>
 </nav>

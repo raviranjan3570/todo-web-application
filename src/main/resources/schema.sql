@@ -1,2 +1,5 @@
+/*
+Stater data for this project
+*/
 insert into TODO
-values(1001, 'Learn spring', false, sysdate(), 'Ravi');
+values (1001, 'Learn spring boot', false, sysdate(), 'Ravi');

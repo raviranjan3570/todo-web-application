@@ -16,6 +16,7 @@ public class WelcomeController {
         return "welcome";
     }
 
+    // The principal is the currently logged-in user.
     public String getLoggedInUserName() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal instanceof UserDetails) {

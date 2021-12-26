@@ -1,7 +1,7 @@
 package com.example.springboot.todo.controller;
 
-import com.example.springboot.todo.model.Todo;
-import com.example.springboot.todo.service.TodoRepository;
+import com.example.springboot.todo.jpa.Todo;
+import com.example.springboot.todo.jpa.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,6 +25,7 @@ public class TodoController {
     @Autowired
     TodoRepository repository;
 
+    // It is used to set date format across the application.
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -47,6 +48,7 @@ public class TodoController {
         return principal.toString();
     }
 
+    // model.addAttribute adds object to the model.
     @RequestMapping(value = "/add-todo", method = RequestMethod.GET)
     public String showAddTodo(ModelMap model) {
         model.addAttribute("todo", new Todo(0, getLoggedInUserName(),
@@ -54,8 +56,9 @@ public class TodoController {
         return "todo";
     }
 
+    // BindingResult checks if the validation is succeeding or not.
     @RequestMapping(value = "/add-todo", method = RequestMethod.POST)
-    public String addTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
+    public String addTodo(@Valid Todo todo, BindingResult result) {
         if (result.hasErrors()) {
             return "todo";
         }
@@ -78,7 +81,7 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/update-todo", method = RequestMethod.POST)
-    public String updateTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
+    public String updateTodo(@Valid Todo todo, BindingResult result) {
         if (result.hasErrors()) {
             return "todo";
         }

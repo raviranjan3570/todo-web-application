@@ -2,6 +2,7 @@
 <%@ include file="common/navigation.jspf" %>
 
 <div class="container">
+    <%--We use Spring form for this--%>
     <form:form method="post" modelAttribute="todo">
         <form:hidden path="id"/>
         <fieldset class="form-group">
